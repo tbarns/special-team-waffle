@@ -41,11 +41,20 @@
 // TODO:   SCR FOLDER WILL BE WHERE WE ARE CREATING THE DYNAMIC HTML DEPENDING ON USER INPUT HTMLJAVASCRIPTJS()
 // TODO:  IN ORDER TO DO THIS WE NEED TO SPLIT UP THE ARRAY BASED ON TYPE OF EMPLOYEE
 
+const Manager = require('./lib/Manager')
+const Intern = require('./lib/Intern')
+const Engineer = require('./lib/Engineer');
+const inquirer = require('inquirer')
+const fs = require('fs')
+const teamMembers = []
 
-function internSelection(){
-    inquirer
-      .prompt([
-        {
+init()
+//add maanger credtioanls
+function init() {
+  inquirer
+    .prompt([
+      {
+        
           type: 'input',
           name: 'name',
           message: 'What is your full name?',
@@ -53,102 +62,135 @@ function internSelection(){
         {
           type: 'input',
           name: 'id',
-          message: 'What is your employee ID?',
+          message: 'What is your employee ID number?',
         },
-        
+  
         {
           type: 'input',
           name: 'email',
           message: 'What is your email?',
         },
         {
-            type: 'input',
-            name: 'school',
-            message: 'What school are you attending?',
-          },
-    
-      ])
-      .then((answers) => {
-        const internContent = generateHTMLIntern(answers)
-     
-    
-        fs.writeFile('index.html', internContent, (err) =>
-          err ? console.log(err) : console.log('Successfully created wrote intern info!')
-        );
-      });
-     
+          type: 'input',
+          name: 'officeNumber',
+          message: 'What is your office number username?',
+        },
+      
+    ])
+    .then((answers) => {
+      const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
+      teamMembers.push(manager)
+      buildTeam()
     }
 
-function engineerSelection(){
-inquirer
-  .prompt([
-    {
-      type: 'input',
-      name: 'name',
-      message: 'What is your full name?',
-    },
-    {
-      type: 'input',
-      name: 'id',
-      message: 'What is your employee ID?',
-    },
-    
-    {
-      type: 'input',
-      name: 'email',
-      message: 'What is your email?',
-    },
-    {
+    )
+}
+function buildTeam() {
+  inquirer
+    .prompt([
+      {
+        type: 'list',
+        name: 'selection',
+        message: 'What employee type are you adding?',
+        choices: ['Intern', new inquirer.Separator(), 'Engineer', new inquirer.Separator(), 'Finished adding employees']
+      }
+    ])
+    .then((answers) => {
+      switch (answers.selection) {
+        case 'Engineer':
+          engineerSelection();
+          break;
+        case 'Intern':
+          internSelection();
+          break;
+        default:
+          renderTeam()
+
+      }
+    })
+}
+
+
+function internSelection() {
+  inquirer
+    .prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: 'What is your full name?',
+      },
+      {
+        type: 'input',
+        name: 'id',
+        message: 'What is your employee ID?',
+      },
+
+      {
+        type: 'input',
+        name: 'email',
+        message: 'What is your email?',
+      },
+      {
+        type: 'input',
+        name: 'school',
+        message: 'What school are you attending?',
+      },
+
+    ])
+    .then((answers) => {
+      // const internContent = generateHTMLIntern(answers)
+      const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
+      teamMembers.push(intern)
+
+      fs.writeFile('index.html', internContent, (err) =>
+        err ? console.log(err) : console.log('Successfully created wrote intern info!')
+      );
+    });
+
+}
+
+function engineerSelection() {
+  inquirer
+    .prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: 'What is your full name?',
+      },
+      {
+        type: 'input',
+        name: 'id',
+        message: 'What is your employee ID?',
+      },
+
+      {
+        type: 'input',
+        name: 'email',
+        message: 'What is your email?',
+      },
+      {
         type: 'input',
         name: 'github',
         message: 'What is your GitHub username?',
       },
 
-  ])
-  .then((answers) => {
-    const engineerContent = generateHTMLEngineer(answers)
- 
+    ])
+    .then((answers) => {
+      // const engineerContent = generateHTMLEngineer(answers)
+      const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
+      teamMembers.push(engineer)
 
-    fs.writeFile('index.html', engineerContent, (err) =>
-      err ? console.log(err) : console.log('Successfully created wrote engineer info!')
-    );
-  });
- 
+      fs.writeFile('index.html', engineerContent, (err) =>
+        err ? console.log(err) : console.log('Successfully created wrote engineer info!')
+      );
+    });
+
 }
 
-function managerSelection(){
-    inquirer
-      .prompt([
-        {
-          type: 'input',
-          name: 'name',
-          message: 'What is your full name?',
-        },
-        {
-          type: 'input',
-          name: 'id',
-          message: 'What is your employee ID?',
-        },
-        
-        {
-          type: 'input',
-          name: 'email',
-          message: 'What is your email?',
-        },
-        {
-            type: 'input',
-            name: 'officeNumber',
-            message: 'What is your office number username?',
-          },
-    
-      ])
-      .then((answers) => {
-        const managerContent = generateHTMLmanager(answers)
-     
-    
-        fs.writeFile('index.html', managerContent, (err) =>
-          err ? console.log(err) : console.log('Successfully created wrote manager info!')
-        );
-      });
-     
-    }
+
+//create this 
+function renderTeam() {
+  fs.writeFile('index.html', writeHTMLFile(teamMembers), (err) =>
+    err ? console.log(err) : console.log('Successfully created wrote intern info!')
+  );
+};
