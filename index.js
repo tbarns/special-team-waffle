@@ -117,23 +117,23 @@ function internSelection() {
       {
         type: 'input',
         name: 'name',
-        message: 'What is your full name?',
+        message: "What is the intern's full name?",
       },
       {
         type: 'input',
         name: 'id',
-        message: 'What is your employee ID?',
+        message: 'What is their employee ID?',
       },
 
       {
         type: 'input',
         name: 'email',
-        message: 'What is your email?',
+        message: 'What is their email?',
       },
       {
         type: 'input',
         name: 'school',
-        message: 'What school are you attending?',
+        message: 'What school are they attending?',
       },
 
     ])
@@ -155,23 +155,23 @@ function engineerSelection() {
       {
         type: 'input',
         name: 'name',
-        message: 'What is your full name?',
+        message: 'What is their full name?',
       },
       {
         type: 'input',
         name: 'id',
-        message: 'What is your employee ID?',
+        message: 'What is their employee ID?',
       },
 
       {
         type: 'input',
         name: 'email',
-        message: 'What is your email?',
+        message: 'What is their email?',
       },
       {
         type: 'input',
         name: 'github',
-        message: 'What is your GitHub username?',
+        message: 'What is their GitHub username?',
       },
 
     ])
