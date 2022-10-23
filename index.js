@@ -45,44 +45,45 @@ const Manager = require('./lib/Manager')
 const Intern = require('./lib/Intern')
 const Engineer = require('./lib/Engineer');
 const inquirer = require('inquirer')
+// const html = require('./src/html_JAVASCRIPT')
 const fs = require('fs')
 const teamMembers = []
-
+console.log(teamMembers)
 init()
-//add maanger credtioanls
+//add manager credentials
 function init() {
   inquirer
     .prompt([
       {
-        
-          type: 'input',
-          name: 'name',
-          message: 'What is your full name?',
-        },
-        {
-          type: 'input',
-          name: 'id',
-          message: 'What is your employee ID number?',
-        },
-  
-        {
-          type: 'input',
-          name: 'email',
-          message: 'What is your email?',
-        },
-        {
-          type: 'input',
-          name: 'officeNumber',
-          message: 'What is your office number username?',
-        },
-      
+        type: 'input',
+        name: 'name',
+        message: 'What is your full name?',
+      },
+
+      {
+        type: 'input',
+        name: 'id',
+        message: 'What is your employee ID number?',
+      },
+
+      {
+        type: 'input',
+        name: 'email',
+        message: 'What is your email?',
+      },
+
+      {
+        type: 'input',
+        name: 'officeNumber',
+        message: 'What is your office number username?',
+      },
+
     ])
     .then((answers) => {
       const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
       teamMembers.push(manager)
       buildTeam()
     }
-
     )
 }
 function buildTeam() {
@@ -142,11 +143,9 @@ function internSelection() {
       const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
       teamMembers.push(intern)
 
-      fs.writeFile('index.html', internContent, (err) =>
-        err ? console.log(err) : console.log('Successfully created wrote intern info!')
-      );
+      
+    
     });
-
 }
 
 function engineerSelection() {
@@ -180,11 +179,8 @@ function engineerSelection() {
       const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
       teamMembers.push(engineer)
 
-      fs.writeFile('index.html', engineerContent, (err) =>
-        err ? console.log(err) : console.log('Successfully created wrote engineer info!')
-      );
+   
     });
-
 }
 
 
@@ -194,3 +190,5 @@ function renderTeam() {
     err ? console.log(err) : console.log('Successfully created wrote intern info!')
   );
 };
+
+// module.exports = index

@@ -1,21 +1,23 @@
-const generateHTMLEngineer = ({ name, id, email, github }) =>
-`
-
-`
-const generateHTMLIntern = ({ name, id, email, school }) =>
-`
-
-`
-
-const generateHTMLManager = ({ name, id, email, officeNumber }) =>
-`
-
-`
 
 
+// const generateHTMLEngineer = ({ name, id, email, github }) =>
+// `
 
-writeHTMLFile(){
-   
+// `
+// const generateHTMLIntern = ({ name, id, email, school }) =>
+// `
+
+// `
+
+// const generateHTMLManager = ({ name, id, email, officeNumber }) =>
+// `
+
+// `
+
+
+
+const writeHTMLFile= () =>
+
     `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -27,5 +29,16 @@ writeHTMLFile(){
     <body>
         
     </body>
-    </html>`
-}
+    </html>
+    `
+
+
+
+// fs.writeFile('index.html', internContent, (err) =>
+//         err ? console.log(err) : console.log('Successfully created wrote intern info!')
+//);
+
+// fs.writeFile('index.html', engineerContent, (err) =>
+// err ? console.log(err) : console.log('Successfully created wrote engineer info!')
+// );
+module.exports = html_JAVASCRIPT 

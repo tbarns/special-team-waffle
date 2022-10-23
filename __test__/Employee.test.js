@@ -12,14 +12,14 @@ test("Can set name via constructor arguments", () => {
   
 //test for id
 test("Can set id via constructor arguments", () => {
-    const id = 13;
+    const id = ">0";
     const e = new Employee(id);
-    expect(e.id).toBe(id);
+    expect(e.id).not.toBe(0);
   });
-//test for email
+// //test for email
 
 test("Can set email via constructor arguments", () => {
     const email = "email@gmail.com";
     const e = new Employee(email);
-    expect(e.email).toBe(email);
+    expect(e.email).toContain(email);
   });

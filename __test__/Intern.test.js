@@ -1,7 +1,7 @@
-const Employee = require('../lib/Employee')
+const Intern = require('../lib/Intern')
 
 test("Can set school via constructor arguments", () => {
     const school = "Yale";
-    const e = new Employee(school);
-    expect(e.school).toBe(school);
+    const i = new Intern(school);
+    expect(i.school).toBe(school);
   });

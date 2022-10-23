@@ -1,7 +1,7 @@
-const Employee = require('../lib/Employee')
+const Engineer = require('../lib/Engineer')
 
 test("Can set github via constructor arguments", () => {
-    const github = "tbarns";
-    const e = new Employee(github);
-    expect(e.github).toBe(github);
+    const github = "github";
+    const eng = new Engineer(github);
+    expect(eng.github).toBe(github);
   });
