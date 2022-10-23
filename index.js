@@ -142,10 +142,10 @@ function internSelection() {
       // const internContent = generateHTMLIntern(answers)
       const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
       teamMembers.push(intern)
-
-      
+      buildTeam()
     
     });
+    
 }
 
 function engineerSelection() {
@@ -179,8 +179,9 @@ function engineerSelection() {
       const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
       teamMembers.push(engineer)
 
-   
+      buildTeam()
     });
+  
 }
 
 
