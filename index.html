@@ -1,16 +1,14 @@
-const teamMembers = require('../index.js')
-
-
-// function generateCards (teamMembers){
-//     //separate array based on employee type
-//     //use getROle method to split up array
-//     array.forEach(element => {( element.getRole() == "engineer")
-        
-//     });
-// }
-
-
-const generateHTMLEngineer = ({name, id, email, github}) =>
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
+        <title>Team Builder</title>
+    </head>
+    <body>
+        ({name, id, email, github}) =>
     `
  <div class="card">
  <header class="card-header">
@@ -30,7 +28,7 @@ const generateHTMLEngineer = ({name, id, email, github}) =>
  </footer>
 </div>
 `
-const generateHTMLIntern = ({ name, id, email, school }) =>
+        ({ name, id, email, school }) =>
     `
     <div class="card">
     <header class="card-header">
@@ -50,9 +48,7 @@ const generateHTMLIntern = ({ name, id, email, school }) =>
     </footer>
    </div>
    `
- 
-
-const generateHTMLManager = ({ name, id, email, officeNumber }) =>
+        ({ name, id, email, officeNumber }) =>
     `
     <div class="card">
     <header class="card-header">
@@ -74,28 +70,6 @@ const generateHTMLManager = ({ name, id, email, officeNumber }) =>
    
 
 `
-
-
-
-const writeHTML = () =>
-
-    `<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
-        <title>Team Builder</title>
-    </head>
-    <body>
-        ${generateHTMLEngineer}
-        ${generateHTMLIntern}
-        ${generateHTMLManager}
     </body>
     </html>
-    `
-
-
-
-module.exports = writeHTML
+    

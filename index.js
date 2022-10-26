@@ -2,7 +2,7 @@ const Manager = require('./lib/Manager')
 const Intern = require('./lib/Intern')
 const Engineer = require('./lib/Engineer');
 const inquirer = require('inquirer')
-// const html = require('./src/html_JAVASCRIPT')
+const writeHTML = require('./src/html_JAVASCRIPT')
 const fs = require('fs')
 const teamMembers = []
 console.log(teamMembers)
@@ -100,9 +100,9 @@ function internSelection() {
       const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
       teamMembers.push(intern)
       buildTeam()
-    
+
     });
-    
+
 }
 
 function engineerSelection() {
@@ -138,15 +138,14 @@ function engineerSelection() {
 
       buildTeam()
     });
-  
+
 }
 
 
-//create this 
 function renderTeam() {
-  fs.writeFile('index.html', writeHTMLFile(teamMembers), (err) =>
-    err ? console.log(err) : console.log('Successfully created wrote intern info!')
+  fs.writeFile('index.html', writeHTML(teamMembers), (err) =>
+    err ? console.log(err) : console.log('Successfully created wrote HTML info!')
   );
 };
 
-// module.exports = index
+module.exports = teamMembers
