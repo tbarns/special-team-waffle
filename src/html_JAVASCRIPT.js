@@ -48,7 +48,7 @@ const generateHTMLEngineer = (name, id, email, github) => {
    <p class="card-footer-item is-size-3">${id}</p>
    <p class="card-footer-item is-size-3"><a href="mailto:${email}"> ${email} &#9993</a></p>
    <p class="card-footer-item is-size-3"> <a href="https://github.com/${github}"> ${github}</a>  <figure class="image is-32x32 is-inline-block">
-   <img src="src/GitHub-Mark-32px-blue.png" alt="github icon">
+   <img src="../src/GitHub-Mark-32px-blue.png" alt="github icon">
 </figure></p>
     </footer>
     </div>
@@ -118,7 +118,11 @@ const writeHTML = (data) => {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
         <title>Team Builder</title>
     </head>
-    <body>
+    <body class= "has-background-danger-light">
+    <br><br>
+    <h1 class= "title is-size 1"> Employee Roster Generator </h1>
+    <br>
+        
       ${generateCards(data)}
     
        
