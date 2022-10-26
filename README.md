@@ -17,6 +17,9 @@ I was tasked to create a CLI that accepts uer inputs and renders an HTML file.  
 
 
 ## Installation 
+
+watch a video on how it works here
+https://app.castify.com/view/d91f835b-dad6-48ad-b7f4-ad58b5f8cbc5
 run node on you CLI
 
 ## Usage

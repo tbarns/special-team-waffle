@@ -5,9 +5,7 @@ function generateCards(teamMembers) {
   //use getROle method to split up array
   teamMembers.forEach(teamMember => {
     if (teamMember.getRole() == "Engineer") {
-      console.log(teamMember)
-      console.log(teamMember.name)
-      console.log(teamMember.github)
+    
 
       teamDivs.push(generateHTMLEngineer(teamMember.name, teamMember.id, teamMember.email, teamMember.github))
     }
@@ -19,9 +17,7 @@ function generateCards(teamMembers) {
     }
     //if manager
     if (teamMember.getRole() == "Manager") {
-      console.log(teamMember)
-      console.log(teamMember.name)
-      console.log(teamMember.github)
+    
 
       teamDivs.push(generateHTMLManager(teamMember.name, teamMember.id, teamMember.email, teamMember.officeNumber))
     }
@@ -45,9 +41,9 @@ const generateHTMLEngineer = (name, id, email, github) => {
     </div>
     </div>
     <footer class="card-footer">
-   <p class="card-footer-item is-size-3">${id}</p>
-   <p class="card-footer-item is-size-3"><a href="mailto:${email}"> ${email} &#9993</a></p>
-   <p class="card-footer-item is-size-3"> <a href="https://github.com/${github}"> ${github}</a>  <figure class="image is-32x32 is-inline-block">
+   <p class="card-footer-item is-size-5">${id}</p>
+   <p class="card-footer-item is-size-5"><a href="mailto:${email}"> ${email} &#9993</a></p>
+   <p class="card-footer-item is-size-5"> <a href="https://github.com/${github}"> ${github}</a>  <figure class="image is-32x32 is-inline-block">
    <img src="../src/GitHub-Mark-32px-blue.png" alt="github icon">
 </figure></p>
     </footer>
@@ -59,7 +55,7 @@ const generateHTMLEngineer = (name, id, email, github) => {
 const generateHTMLIntern = (name, id, email, school) => {
   return `
     <div class="column is-two-thirds">
-    <div class="card has-background-info">
+    <div class="card has-background-danger">
     <header class="card-header">
     <p class="card-header-title is-size-2">
       Intern
@@ -71,9 +67,9 @@ const generateHTMLIntern = (name, id, email, school) => {
        </div>
    </div>
     <footer class="card-footer">
-      <p class="card-footer-item is-size-3">${id}</p>
-      <p class="card-footer-item is-size-3"><a href="mailto:${email}"> ${email} &#9993</a></p>
-      <p class="card-footer-item is-size-3">${school}</p>
+      <p class="card-footer-item is-size-5">${id}</p>
+      <p class="card-footer-item is-size-5"><a href="mailto:${email}"> ${email} &#9993</a></p>
+      <p class="card-footer-item is-size-5">${school}</p>
     </footer>
    </div>
    </div>
@@ -96,9 +92,9 @@ const generateHTMLManager = (name, id, email, officeNumber) => {
        </div>
    </div>
     <footer class="card-footer">
-      <p class="card-footer-item is-size-3">${id}</p>
-      <p class="card-footer-item is-size-3"><a href="mailto:${email}"> ${email} &#9993</a></p>
-      <p class="card-footer-item is-size-3">${officeNumber}</p>
+      <p class="card-footer-item is-size-5">${id}</p>
+      <p class="card-footer-item is-size-5"><a href="mailto:${email}"> ${email} &#9993</a></p>
+      <p class="card-footer-item is-size-5">${officeNumber}</p>
     </footer>
    </div>
    </div>
