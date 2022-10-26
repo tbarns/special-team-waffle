@@ -1,85 +1,115 @@
-const teamMembers = require('../index.js')
+
+function generateCards(teamMembers) {
+  const teamDivs = []
+  //separate array based on employee type
+  //use getROle method to split up array
+  teamMembers.forEach(teamMember => {
+    if (teamMember.getRole() == "Engineer") {
+      console.log(teamMember)
+      console.log(teamMember.name)
+      console.log(teamMember.github)
+
+      teamDivs.push(generateHTMLEngineer(teamMember.name, teamMember.id, teamMember.email, teamMember.github))
+    }
+    //if intern
+    if (teamMember.getRole() == "Intern") {
 
 
-// function generateCards (teamMembers){
-//     //separate array based on employee type
-//     //use getROle method to split up array
-//     array.forEach(element => {( element.getRole() == "engineer")
-        
-//     });
-// }
+      teamDivs.push(generateHTMLIntern(teamMember.name, teamMember.id, teamMember.email, teamMember.school))
+    }
+    //if manager
+    if (teamMember.getRole() == "Manager") {
+      console.log(teamMember)
+      console.log(teamMember.name)
+      console.log(teamMember.github)
+
+      teamDivs.push(generateHTMLManager(teamMember.name, teamMember.id, teamMember.email, teamMember.officeNumber))
+    }
+  });
+  return teamDivs.join("")
+}
 
 
-const generateHTMLEngineer = ({name, id, email, github}) =>
-    `
- <div class="card">
- <header class="card-header">
- <p class="card-header-title">
-   Engineer
- </p>
- <div class="card-content">
- <div class="content">
-  ${name}
-     <br>
-    </div>
-</div>
- <footer class="card-footer">
-   <p class="card-footer-item">${id}</p>
-   <p class="card-footer-item">${email}</p>
-   <p class="card-footer-item">${github}</p>
- </footer>
-</div>
-`
-const generateHTMLIntern = ({ name, id, email, school }) =>
-    `
-    <div class="card">
+const generateHTMLEngineer = (name, id, email, github) => {
+  return `
+    <div class="column is-two-thirds">
+    <div class="card has-background-warning">
     <header class="card-header">
-    <p class="card-header-title">
+    <p class="card-header-title is-size-2">
+   Engineer
+    </p>
+    <div class="card-content">
+    <div class="content is-size-1">
+    ${name}
+    <br>
+    </div>
+    </div>
+    <footer class="card-footer">
+   <p class="card-footer-item is-size-3">${id}</p>
+   <p class="card-footer-item is-size-3"><a href="mailto:${email}"> ${email} &#9993</a></p>
+   <p class="card-footer-item is-size-3"> <a href="https://github.com/${github}"> ${github}</a>  <figure class="image is-32x32 is-inline-block">
+   <img src="src/GitHub-Mark-32px-blue.png" alt="github icon">
+</figure></p>
+    </footer>
+    </div>
+    </div>
+    
+`}
+
+const generateHTMLIntern = (name, id, email, school) => {
+  return `
+    <div class="column is-two-thirds">
+    <div class="card has-background-info">
+    <header class="card-header">
+    <p class="card-header-title is-size-2">
       Intern
     </p>
     <div class="card-content">
-    <div class="content">
+    <div class="content is-size-1">
      ${name}
         <br>
        </div>
    </div>
     <footer class="card-footer">
-      <p class="card-footer-item">${id}</p>
-      <p class="card-footer-item">${email}</p>
-      <p class="card-footer-item">${school}</p>
+      <p class="card-footer-item is-size-3">${id}</p>
+      <p class="card-footer-item is-size-3"><a href="mailto:${email}"> ${email} &#9993</a></p>
+      <p class="card-footer-item is-size-3">${school}</p>
     </footer>
    </div>
-   `
- 
-
-const generateHTMLManager = ({ name, id, email, officeNumber }) =>
-    `
-    <div class="card">
-    <header class="card-header">
-    <p class="card-header-title">
-      Manager
-    </p>
-    <div class="card-content">
-    <div class="content">
-     ${name}
-        <br>
-       </div>
-   </div>
-    <footer class="card-footer">
-      <p class="card-footer-item">${id}</p>
-      <p class="card-footer-item">${email}</p>
-      <p class="card-footer-item">${officeNumber}</p>
-    </footer>
    </div>
    
+   `
+}
+
+const generateHTMLManager = (name, id, email, officeNumber) => {
+  return `<div class="columns">
+    <div class="column is-two-thirds">
+    <div class="card has-background-primary">
+    <header class="card-header">
+    <p class="card-header-title is-size-2"> 
+    Manager
+    </p>
+    <div class="card-content">
+    <div class="content is-size-1">
+     ${name}
+        <br>
+       </div>
+   </div>
+    <footer class="card-footer">
+      <p class="card-footer-item is-size-3">${id}</p>
+      <p class="card-footer-item is-size-3"><a href="mailto:${email}"> ${email} &#9993</a></p>
+      <p class="card-footer-item is-size-3">${officeNumber}</p>
+    </footer>
+   </div>
+   </div>
+   </div>
 
 `
+}
 
+const writeHTML = (data) => {
 
-
-const writeHTML = () =>
-
-    `<!DOCTYPE html>
+  return `<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -89,13 +119,13 @@ const writeHTML = () =>
         <title>Team Builder</title>
     </head>
     <body>
-        ${generateHTMLEngineer}
-        ${generateHTMLIntern}
-        ${generateHTMLManager}
+      ${generateCards(data)}
+    
+       
     </body>
     </html>
     `
-
+}
 
 
 module.exports = writeHTML

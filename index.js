@@ -32,7 +32,7 @@ function init() {
       {
         type: 'input',
         name: 'officeNumber',
-        message: 'What is your office number username?',
+        message: 'What is your office number?',
       },
 
     ])
@@ -143,7 +143,7 @@ function engineerSelection() {
 
 
 function renderTeam() {
-  fs.writeFile('index.html', writeHTML(teamMembers), (err) =>
+  fs.writeFile('./dist/index.html', writeHTML(teamMembers), (err) =>
     err ? console.log(err) : console.log('Successfully created wrote HTML info!')
   );
 };
